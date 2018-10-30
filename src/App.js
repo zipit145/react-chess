@@ -15,6 +15,9 @@ class App extends Component {
       selectPiece: true,
       selectedPiece: null,
       selectedPieceSymbol: "",
+      inputPosition: null,
+      inputX: null,
+      inputY: null,
       firstClick: null,
       secondClick: null,
       pieces: [
@@ -245,8 +248,19 @@ class App extends Component {
       ]
     }
   }
-
+  inputHandler = (e) => {
+    console.log(e%8,Math.round(e/8))
+    this.setState({
+      inputX: e%8,
+      inputY: Math.round(e/8)
+    })
+      //return x
+  }
   movePieces = (e) => {
+    this.setState({inputPosition: e.target.id})
+    this.inputHandler(e.target.id)
+    console.log(this.state.inputX,this.state.inputY)
+    //console.log(x)
     let selection = this.state.pieces.filter(piece => piece.player === this.state.currentPlayer && piece.position === Number(e.target.id))
     let piece = selection[0]
     if(selection.length > 0 && this.state.selectPiece === true){
@@ -270,7 +284,7 @@ class App extends Component {
       this.setState({selectPiece: this.state.selectPiece ? false : true})
       this.setBoard()
     } else {
-      alert("here")
+      alert("please select a piece that belongs to you")
       console.log(selection)
       console.log(this.state.selectPiece)
     }
@@ -328,7 +342,7 @@ class App extends Component {
     return (
       <div className="App">
       
-        <Board createTable={this.createTable} setBoard={this.setBoard} clearBoard={this.clearBoard}/>
+        <Board createTable={this.createTable} setBoard={this.setBoard} clearBoard={this.clearBoard} inputHandler={this.inputHandler}/>
         <Sidebar currentPlayer={this.state.currentPlayer} selectedPieceSymbol={this.state.selectedPieceSymbol}/>
       </div>
     );
