@@ -12,3 +12,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.player1 {
+  color: grey;
+  border-color: black;
+}
+.player2 {
+  color: black;
+  border-color: black;
+}
+.king {
+  border-color: black;
+  font-weight: bold;
+}
+.black {
+  background-color: lightblue;
+
+  border-color:black;
+}
+
