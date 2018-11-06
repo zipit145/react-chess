@@ -16,8 +16,7 @@ class App extends Component {
       selectedPiece: null,
       selectedPieceSymbol: "",
       inputPosition: null,
-      inputX: null,
-      inputY: null,
+      input: [],
       firstClick: null,
       secondClick: null,
       pieceInHand: {},
@@ -837,43 +836,170 @@ class App extends Component {
     }
     this.movePieces= this.movePieces.bind(this)
   }
-  inputHandler = (e) => {
-    console.log("right answer" + e%8, Math.round(e/8)+1)
-     this.setState({
-        inputX: e%8,
-        inputY: Math.round(e/8)+1
-      })
-      //return x
+  inputHandler = (id) => {
+    let x;
+    let y;
+    if(id%8 !== 0) {
+      x = id%8
+    } else {
+      x = 8
+    }
+    if(id%8 !== 0) {
+      if((id/8) < Math.round(id/8)){
+        y = Math.round(id/8)
+      } else {
+        y = Math.round(id/8)+1
+      }
+    } else {
+      y = id/8
+    }
+      return [x, y]
   }
+
+  knightMove = () => {
+
+  }
+  horizMove = () => {
+
+  }
+  vertMove = () => {
+
+  }
+  diagMove = () => {
+
+  }
+  castleMove = () => {
+
+  }
+  obstructedConstrainedMove = () => {
+    console.log("you ran the obstructed function!")
+    return true
+  }
+
+  rook = () => {
+    console.log("you ran the rook function!")
+    return true
+    // this.horizMove()
+    // this.vertMove()
+    // this.obstructedConstrainedMove()
+  }
+
+
+
+  notMyOwnPiece = (input1) => {
+    let finish
+    finish = this.state.positions.filter(position =>{
+      if (position.id === Number(input1)) {
+        return position
+      }
+    })
+    if (this.state.pieceInHand.player === finish[0].piece.player) {
+      return false
+    } else {
+      return true
+    }
+  }
+  pieceMove = () => {
+    switch(this.state.pieceInHand.type) {
+      case "pawn":
+          console.log("pawn")
+          break;
+      case "rook":
+          if(this.rook() && this.obstructedConstrainedMove()){
+            console.log("success!!!!")
+          }
+          break;
+      case "knight":
+          console.log("knight")
+          break;
+      case "bishop":
+          console.log("bishop")
+          break;
+      case "queen":
+          console.log("queen")
+          break;
+      case "king":
+          console.log("king")
+          break;
+      default:
+          console.log("error")
+    }
+  }
+  validMove = (input1) => {
+    let start
+    let finish
+    start = this.state.positions.filter(position =>{
+      if (position.id === this.inputConverter(this.state.input)) {
+        return position
+      }
+    })
+    finish = this.state.positions.filter(position =>{
+      if (position.id === Number(input1)) {
+        return position
+      }
+    })
+    let pieceValid
+
+  }
+  inputConverter = (input) => {
+    let output = Number(((input[1]-1)*8) + input[0])
+    return output
+  }
+
   movePieces = (e) => {
     // this.setState({inputPosition: e.target.id})
-    // this.inputHandler(e.target.id)
+    let input1 = this.state.input
+    let input = this.inputHandler(e.target.id)
+    let output = this.inputConverter(input)
+    console.log(input, "input")
+    console.log(this.state.input)
+    console.log(Number(e.target.id), "actual target")
+    console.log(output,  "output calc")
+  
     // console.log("State answer" +this.state.inputX,this.state.inputY)
-    //console.log(x)
-    console.log(e.target.id%8)
-    console.log(Math.round(e.target.id/8)+1)
-    console.log(e.target.id/8)
+    //console.log(this.state.inputX)
+
+ 
+    // this.setState({
+    //   inputX: e%8,
+    //   inputY: Math.round(e/8)+1
+    // })
+    //console.log(e.target.id/8, "y2")
+
+    //console.log(e.target.id/8)
     let selection = this.state.positions.filter(piece => piece.pieceOccupied === true && piece.piece.player === this.state.currentPlayer && piece.id === Number(e.target.id))
     let piece = selection[0]
-    console.log(selection)
+    //console.log(selection)
     if(selection.length > 0 && this.state.selectPiece === true){
+        this.setState({input: input})
         this.setState({selectedPiece: piece.piece.id})
         this.setState({selectedPieceSymbol: piece.piece.type[0]})
         this.setState({pieceInHand: piece.piece})
         piece.piece = {}
         piece.pieceOccupied = false
-        console.log(selection)
+        //console.log(selection)
       this.setState({selectPiece: this.state.selectPiece ? false : true})
-      console.log('here')
-    } else if (this.state.selectPiece === false){
+      //console.log('here')
+    } else if (this.state.selectPiece === false && this.notMyOwnPiece(e.target.id)){
+      //console.log(this.validMove(e.target.id))
+      this.pieceMove()
+      this.setState({input: []})
       this.state.positions.filter(piece => {
         if(piece.id == e.target.id) {
-          console.log(piece.id)
+          //console.log(piece.id)
           piece.piece = this.state.pieceInHand
           piece.pieceOccupied = true
-          this.setState({pieceInHand: {}})
+
         }
       })
+      this.setState({pieceInHand: {}})
+      // var x = this.state.positions.filter(piece => {
+      //   return piece.id == e.target.id) {
+      //     //console.log(piece.id)
+
+      //   }
+      // })
+      // piece.piece = this.state.pieceInHand
       //piece.position = e.target.id
       this.setState({selectedPiece: null})
       this.setState({selectedPieceSymbol: ""})
@@ -884,9 +1010,7 @@ class App extends Component {
       console.log("there")
       this.setBoard()
     } else {
-      alert("please select a piece that belongs to you")
-      console.log(selection)
-      console.log(this.state.selectPiece)
+      alert("invalid selection")
     }
   }
   movePieces2 = (e) => {
