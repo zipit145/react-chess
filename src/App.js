@@ -862,7 +862,33 @@ class App extends Component {
   horizMove = () => {
 
   }
-  vertMove = () => {
+  vertMove = (finish) => {
+    console.log(finish,"finish")
+    if (this.state.input[0] === this.inputHandler(finish[0].id)[0]) {
+      if (this.state.input[1] > this.inputHandler(finish[0].id)[1]) {
+        for (let i = this.inputHandler(finish[0].id)[1]+1; i<this.state.input[1]; i++) {
+          for (let z = 0; z<64;z++) {
+            if(this.state.positions[z].id === this.inputConverter([this.state.input[0],i]) && this.state.positions[z].pieceOccupied) {
+              console.log(this.state.positions[z].id,"obstruction found")
+              return false
+            }
+
+          }
+        }
+        return true
+      } else if (this.state.input[1] < this.inputHandler(finish[0].id)[1]) {
+        for (let i = this.state.input[1]+1; i<this.inputHandler(finish[0].id)[1]; i++) {
+          for (let z = 0; z<64;z++) {
+            if(this.state.positions[z].id === this.inputConverter([this.state.input[0],i]) && this.state.positions[z].pieceOccupied) {
+              console.log(this.state.positions[z].id,"obstruction found1")
+              return false
+            }
+          }
+        }
+        return true
+      }
+    }
+    //return valid
 
   }
   diagMove = () => {
@@ -871,9 +897,26 @@ class App extends Component {
   castleMove = () => {
 
   }
-  obstructedConstrainedMove = () => {
+  obstructedConstrainedMove = (id) => {
     console.log("you ran the obstructed function!")
-    return true
+    let finish
+    let returnVal = false;
+    finish = this.state.positions.filter(position =>{
+      if (position.id === Number(id)) {
+        return position
+      }
+    })
+    if (this.state.input[1] === this.inputHandler(finish[0].id)[1]) {
+      console.log("totally a horizontal move")
+    }
+    if (Math.abs(this.state.input[1]-this.inputHandler(finish[0].id)[1]) === Math.abs(this.state.input[0]-this.inputHandler(finish[0].id)[0])) {
+      console.log("totally a diagonal move")
+    }
+    if(this.vertMove(finish)){
+      return true
+    } else {
+      return false
+    }
   }
 
   rook = () => {
@@ -899,30 +942,37 @@ class App extends Component {
       return true
     }
   }
-  pieceMove = () => {
+  pieceMove = (id) => {
     switch(this.state.pieceInHand.type) {
       case "pawn":
-          console.log("pawn")
+          return true
           break;
       case "rook":
-          if(this.rook() && this.obstructedConstrainedMove()){
-            console.log("success!!!!")
+          var result = this.obstructedConstrainedMove(id)
+          console.log("result", result)
+          if(result){
+            console.log("cookie")
+            return true
+            
+          } else {
+            console.log("no cookie")
+            return false
           }
           break;
       case "knight":
-          console.log("knight")
+          return true
           break;
       case "bishop":
-          console.log("bishop")
+      return true
           break;
       case "queen":
-          console.log("queen")
+      return true
           break;
       case "king":
-          console.log("king")
+      return true
           break;
       default:
-          console.log("error")
+      return true
     }
   }
   validMove = (input1) => {
@@ -982,7 +1032,9 @@ class App extends Component {
       //console.log('here')
     } else if (this.state.selectPiece === false && this.notMyOwnPiece(e.target.id)){
       //console.log(this.validMove(e.target.id))
-      this.pieceMove()
+
+      this.pieceMove(e.target.id)
+      console.log(this.pieceMove(e.target.id))
       this.setState({input: []})
       this.state.positions.filter(piece => {
         if(piece.id == e.target.id) {
