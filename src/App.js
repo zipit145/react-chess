@@ -859,25 +859,45 @@ class App extends Component {
   knightMove = () => {
 
   }
-  horizMove = () => {
+  horizMove = (finish,y1,y2) => {
+    if (y1 > y2) {
+      for (let i = y2+1; i<y1; i++) {
+        for (let z = 0; z<64;z++) {
+          if(this.state.positions[z].id === this.inputConverter([i,this.state.input[1]]) && this.state.positions[z].pieceOccupied) {
+            console.log(this.state.positions[z].id,"obstruction found")
+            return false
+          }
 
+        }
+      }
+      return true
+    } else if (y1 < y2) {
+      for (let i = y1+1; i<y2; i++) {
+        for (let z = 0; z<64;z++) {
+          if(this.state.positions[z].id === this.inputConverter([i,this.state.input[1]]) && this.state.positions[z].pieceOccupied) {
+            console.log(this.state.positions[z].id,"obstruction found1")
+            return false
+          }
+        }
+      }
+      return true
+    }
   }
-  vertMove = (finish) => {
-    console.log(finish,"finish")
-    if (this.state.input[0] === this.inputHandler(finish[0].id)[0]) {
-      if (this.state.input[1] > this.inputHandler(finish[0].id)[1]) {
-        for (let i = this.inputHandler(finish[0].id)[1]+1; i<this.state.input[1]; i++) {
+  vertMove = (finish,x1,x2) => {
+    console.log(x1, "x1", x2, "x2")
+    //if (this.state.input[0] === this.inputHandler(finish[0].id)[0]) {
+      if (x1 > x2) {
+        for (let i = x2+1; i<x1; i++) {
           for (let z = 0; z<64;z++) {
             if(this.state.positions[z].id === this.inputConverter([this.state.input[0],i]) && this.state.positions[z].pieceOccupied) {
               console.log(this.state.positions[z].id,"obstruction found")
               return false
             }
-
           }
         }
         return true
-      } else if (this.state.input[1] < this.inputHandler(finish[0].id)[1]) {
-        for (let i = this.state.input[1]+1; i<this.inputHandler(finish[0].id)[1]; i++) {
+      } else if (x1 < x2) {
+        for (let i = x1+1; i<x2; i++) {
           for (let z = 0; z<64;z++) {
             if(this.state.positions[z].id === this.inputConverter([this.state.input[0],i]) && this.state.positions[z].pieceOccupied) {
               console.log(this.state.positions[z].id,"obstruction found1")
@@ -887,12 +907,86 @@ class App extends Component {
         }
         return true
       }
-    }
-    //return valid
-
+    //}
   }
-  diagMove = () => {
-
+  diagMove = (x1,x2,y1,y2,) => {
+    let deltaX = x1-x2
+    let deltaY = y1-y2
+    let xValues = []
+    let yValues = []
+    console.log(x1,"x1", x2, "x2")
+    if(deltaX<0 && deltaY>0){
+      for(let i = y1-1; i>y2; i--) {
+        yValues.push(i)
+      }
+      for(let z=x1+1;z<x2;z++) {
+        xValues.push(z)
+        console.log(z,"x")
+      }
+      for(let j=0; j<xValues.length;j++) {
+        for(let x = 0; x<64;x++){
+          if(this.state.positions[x].id === this.inputConverter([yValues[j],xValues[j]]) && this.state.positions[x].pieceOccupied){
+            console.log(this.state.positions[x].id, "obstruction found")
+            return false
+          }
+        }
+        console.log([yValues[j],xValues[j]], "final for diag")
+      }
+      return true
+    } else if (deltaX<0 && deltaY<0){
+      for(let i = y1+1; i<y2; i++) {
+        yValues.push(i)
+      }
+      for(let z=x1+1;z<x2;z++) {
+        xValues.push(z)
+      }
+      for(let j=0; j<xValues.length;j++) {
+        for(let x = 0; x<64;x++){
+          if(this.state.positions[x].id === this.inputConverter([yValues[j],xValues[j]]) && this.state.positions[x].pieceOccupied){
+            console.log(this.state.positions[x].id, "obstruction found")
+            return false
+          }
+        }
+        console.log([yValues[j],xValues[j]], "final for diag")
+      }
+      return true
+    } else if (deltaX>0 && deltaY>0){
+      for(let i = y1-1; i>y2; i--) {
+        yValues.push(i)
+      }
+      for(let z=x1-1;z>x2;z--) {
+        xValues.push(z)
+      }
+      for(let j=0; j<xValues.length;j++) {
+        for(let x = 0; x<64;x++){
+          if(this.state.positions[x].id === this.inputConverter([yValues[j],xValues[j]]) && this.state.positions[x].pieceOccupied){
+            console.log(this.state.positions[x].id, "obstruction found")
+            return false
+          }
+        }
+        console.log([yValues[j],xValues[j]], "final for diag")
+      }
+      return true
+    } else if (deltaX>0 && deltaY<0){
+      for(let i = y1+1; i<y2; i++) {
+        yValues.push(i)
+      }
+      for(let z=x1-1;z>x2;z--) {
+        xValues.push(z)
+      }
+      for(let j=0; j<xValues.length;j++) {
+        for(let x = 0; x<64;x++){
+          if(this.state.positions[x].id === this.inputConverter([yValues[j],xValues[j]]) && this.state.positions[x].pieceOccupied){
+            console.log(this.state.positions[x].id, "obstruction found")
+            return false
+          }
+        }
+        console.log([yValues[j],xValues[j]], "final for diag")
+      }
+      return true
+    }
+    console.log("diag")
+    return true
   }
   castleMove = () => {
 
@@ -906,28 +1000,33 @@ class App extends Component {
         return position
       }
     })
-    if (this.state.input[1] === this.inputHandler(finish[0].id)[1]) {
-      console.log("totally a horizontal move")
-    }
-    if (Math.abs(this.state.input[1]-this.inputHandler(finish[0].id)[1]) === Math.abs(this.state.input[0]-this.inputHandler(finish[0].id)[0])) {
-      console.log("totally a diagonal move")
-    }
-    if(this.vertMove(finish)){
-      return true
-    } else {
-      return false
+    let y1 = this.state.input[0]
+    let y2 = this.inputHandler(finish[0].id)[0]
+    let x1 = this.state.input[1]
+    let x2 = this.inputHandler(finish[0].id)[1]
+
+    if (y1 === y2) {
+      if(this.vertMove(finish, x1, x2)) {
+        return true
+      } else {
+        return false
+      }
+    } else if (x1 === x2) {
+      if(this.horizMove(finish, y1, y2)) {
+        return true
+      } else {
+        return false
+      }
+
+    } else if (Math.abs(x1-x2) === Math.abs(y1-y2)) {
+      if(this.diagMove(x1,x2,y1,y2)){
+        return true
+      } else {
+        return false
+      }
+
     }
   }
-
-  rook = () => {
-    console.log("you ran the rook function!")
-    return true
-    // this.horizMove()
-    // this.vertMove()
-    // this.obstructedConstrainedMove()
-  }
-
-
 
   notMyOwnPiece = (input1) => {
     let finish
@@ -949,13 +1048,9 @@ class App extends Component {
           break;
       case "rook":
           var result = this.obstructedConstrainedMove(id)
-          console.log("result", result)
           if(result){
-            console.log("cookie")
-            return true
-            
+            return true 
           } else {
-            console.log("no cookie")
             return false
           }
           break;
@@ -1030,11 +1125,11 @@ class App extends Component {
         //console.log(selection)
       this.setState({selectPiece: this.state.selectPiece ? false : true})
       //console.log('here')
-    } else if (this.state.selectPiece === false && this.notMyOwnPiece(e.target.id)){
+    } else if (this.state.selectPiece === false && this.notMyOwnPiece(e.target.id) && this.pieceMove(e.target.id)){
       //console.log(this.validMove(e.target.id))
 
-      this.pieceMove(e.target.id)
-      console.log(this.pieceMove(e.target.id))
+      // this.pieceMove(e.target.id)
+      // console.log(this.pieceMove(e.target.id))
       this.setState({input: []})
       this.state.positions.filter(piece => {
         if(piece.id == e.target.id) {
