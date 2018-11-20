@@ -30,6 +30,7 @@ class App extends Component {
             type: "rook",
             player: true,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -41,6 +42,7 @@ class App extends Component {
             type: "knight",
             player: true,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -52,6 +54,7 @@ class App extends Component {
             type: "bishop",
             player: true,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -63,6 +66,7 @@ class App extends Component {
             type: "queen",
             player: true,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -74,6 +78,7 @@ class App extends Component {
             type: "king",
             player: true,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -85,6 +90,7 @@ class App extends Component {
             type: "bishop",
             player: true,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -96,6 +102,7 @@ class App extends Component {
             type: "knight",
             player: true,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -108,6 +115,7 @@ class App extends Component {
             player: true,
             inPlay: true,
             king: false,
+            hasMoved: false
           }
         },
         {
@@ -119,6 +127,7 @@ class App extends Component {
             type: "pawn",
             player: true,
             inPlay: true,
+            hasMoved: false,
             king: false,
           }
         },
@@ -131,6 +140,7 @@ class App extends Component {
             type: "pawn",
             player: true,
             inPlay: true,
+            hasMoved: false,
             king: false,
           }
         },
@@ -143,6 +153,7 @@ class App extends Component {
             type: "pawn",
             player: true,
             inPlay: true,
+            hasMoved: false,
             king: false,
           }
         },
@@ -155,6 +166,7 @@ class App extends Component {
             type: "pawn",
             player: true,
             inPlay: true,
+            hasMoved: false,
             king: false,
           }
         },
@@ -167,6 +179,7 @@ class App extends Component {
             type: "pawn",
             player: true,
             inPlay: true,
+            hasMoved: false,
             king: false,
           }
         },
@@ -179,6 +192,7 @@ class App extends Component {
             type: "pawn",
             player: true,
             inPlay: true,
+            hasMoved: false,
             king: false,
           }
         },
@@ -191,6 +205,7 @@ class App extends Component {
             type: "pawn",
             player: true,
             inPlay: true,
+            hasMoved: false,
             king: false,
           }
         },
@@ -203,6 +218,7 @@ class App extends Component {
             type: "pawn",
             player: true,
             inPlay: true,
+            hasMoved: false,
             king: false,
           }
         },
@@ -407,6 +423,7 @@ class App extends Component {
             type: "pawn",
             player: false,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -418,6 +435,7 @@ class App extends Component {
             type: "pawn",
             player: false,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -429,6 +447,7 @@ class App extends Component {
             type: "pawn",
             player: false,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -440,6 +459,7 @@ class App extends Component {
             type: "pawn",
             player: false,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -451,6 +471,7 @@ class App extends Component {
             type: "pawn",
             player: false,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -462,6 +483,7 @@ class App extends Component {
             type: "pawn",
             player: false,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -473,6 +495,7 @@ class App extends Component {
             type: "pawn",
             player: false,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -484,6 +507,7 @@ class App extends Component {
             type: "pawn",
             player: false,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -495,6 +519,7 @@ class App extends Component {
             type: "rook",
             player: false,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -506,6 +531,7 @@ class App extends Component {
             type: "knight",
             player: false,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -517,6 +543,7 @@ class App extends Component {
             type: "bishop",
             player: false,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -528,6 +555,7 @@ class App extends Component {
             type: "queen",
             player: false,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -539,6 +567,7 @@ class App extends Component {
             type: "king",
             player: false,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -550,6 +579,7 @@ class App extends Component {
             type: "bishop",
             player: false,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -561,6 +591,7 @@ class App extends Component {
             type: "knight",
             player: false,
             inPlay: true,
+            hasMoved: false
           }
         },
         {
@@ -572,266 +603,9 @@ class App extends Component {
             type: "rook",
             player: false,
             inPlay: true,
+            hasMoved: false
           }
         },
-      ],
-      pieces: [
-        {
-          id: 1,
-          type: "pawn",
-          position: 9,
-          player: true,
-          inPlay: true,
-          king: false,
-        },
-        {
-          id: 2,
-          type: "pawn",
-          position: 10,
-          player: true,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 3,
-          type: "pawn",
-          position: 11,
-          player: true,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 4,
-          type: "pawn",
-          position: 12,
-          player: true,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 5,
-          type: "pawn",
-          position: 13,
-          player: true,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 6,
-          type: "pawn",
-          position: 14,
-          player: true,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 7,
-          type: "pawn",
-          position: 15,
-          player: true,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 8,
-          type: "pawn",
-          position: 16,
-          player: true,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 9,
-          type: "pawn",
-          position: 49,
-          player: false,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 10,
-          type: "pawn",
-          position: 50,
-          player: false,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 11,
-          type: "pawn",
-          position: 51,
-          player: false,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 12,
-          type: "pawn",
-          position: 52,
-          player: false,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 13,
-          type: "pawn",
-          position: 53,
-          player: false,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 14,
-          type: "pawn",
-          position: 54,
-          player: false,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 15,
-          type: "pawn",
-          position: 55,
-          player: false,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 16,
-          type: "pawn",
-          position: 56,
-          player: false,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 17,
-          type: "rook",
-          position: 1,
-          player: true,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 18,
-          type: "rook",
-          position: 8,
-          player: true,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 19,
-          type: "knight",
-          position: 2,
-          player: true,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 20,
-          type: "knight",
-          position: 7,
-          player: true,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 21,
-          type: "bishop",
-          position: 3,
-          player: true,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 22,
-          type: "bishop",
-          position: 6,
-          player: true,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 23,
-          type: "queen",
-          position: 4,
-          player: true,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 24,
-          type: "king",
-          position: 5,
-          player: true,
-          inPlay: true,
-          king: true
-        },
-        {
-          id: 25,
-          type: "rook",
-          position: 57,
-          player: false,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 26,
-          type: "rook",
-          position: 64,
-          player: false,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 27,
-          type: "knight",
-          position: 58,
-          player: false,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 28,
-          type: "knight",
-          position: 63,
-          player: false,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 29,
-          type: "bishop",
-          position: 59,
-          player: false,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 30,
-          type: "bishop",
-          position: 62,
-          player: false,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 31,
-          type: "queen",
-          position: 60,
-          player: false,
-          inPlay: true,
-          king: false
-        },
-        {
-          id: 32,
-          type: "king",
-          position: 61,
-          player: false,
-          inPlay: true,
-          king: true,
-        }
       ]
     }
     this.movePieces= this.movePieces.bind(this)
@@ -856,9 +630,30 @@ class App extends Component {
       return [x, y]
   }
 
-  knightMove = () => {
+  knightMove = (id) => {
+    let finish
+    let returnVal = false;
+    finish = this.state.positions.filter(position =>{
+      if (position.id === Number(id)) {
+        return position
+      }
+    })
+    let y1 = this.state.input[0]
+    let y2 = this.inputHandler(finish[0].id)[0]
+    let x1 = this.state.input[1]
+    let x2 = this.inputHandler(finish[0].id)[1]
+    let deltaX = x1-x2
+    let deltaY = y1-y2
+    if(Math.abs(deltaX) === 2 && Math.abs(deltaY) === 1) {
 
+    } else if (Math.abs(deltaX) === 1 && Math.abs(deltaY) === 2) {
+
+    } else {
+      return false
+    }
+    return true
   }
+
   horizMove = (finish,y1,y2) => {
     if (y1 > y2) {
       for (let i = y2+1; i<y1; i++) {
@@ -883,33 +678,74 @@ class App extends Component {
       return true
     }
   }
-  vertMove = (finish,x1,x2) => {
-    console.log(x1, "x1", x2, "x2")
-    //if (this.state.input[0] === this.inputHandler(finish[0].id)[0]) {
-      if (x1 > x2) {
-        for (let i = x2+1; i<x1; i++) {
-          for (let z = 0; z<64;z++) {
-            if(this.state.positions[z].id === this.inputConverter([this.state.input[0],i]) && this.state.positions[z].pieceOccupied) {
-              console.log(this.state.positions[z].id,"obstruction found")
-              return false
-            }
-          }
-        }
-        return true
-      } else if (x1 < x2) {
-        for (let i = x1+1; i<x2; i++) {
-          for (let z = 0; z<64;z++) {
-            if(this.state.positions[z].id === this.inputConverter([this.state.input[0],i]) && this.state.positions[z].pieceOccupied) {
-              console.log(this.state.positions[z].id,"obstruction found1")
-              return false
-            }
-          }
-        }
-        return true
-      }
-    //}
+
+  kingMove = (x1,y1,x2,y2) => {
+    let deltaX = x1-x2
+    let deltaY = y1-y2
+    if(Math.abs(deltaX) < 2 && Math.abs(deltaY) < 2) {
+      return true
+    } else if (this.castleMove(x1,y1,x2,y2)) {
+      //castle condition
+    }
+    console.log("king")
+    return false
   }
-  diagMove = (x1,x2,y1,y2,) => {
+
+  pawnKillCheck = (x2,y2) => {
+    let finish
+    finish = this.state.positions.filter(position =>{
+      if (position.id === this.inputConverter([x2,y2])) {
+        return position
+      }
+    })
+    if (this.state.pieceInHand.player === finish[0].piece.player) {
+      return false
+    } else {
+      return true
+    }
+  }
+  pawnMove = (x1,x2,y1,y2) => {
+    console.log(x1,x2,y1,y2)
+    let deltaX = x1-x2
+    let deltaY = y1-y2
+    console.log("deltaX", deltaX)
+    console.log("deltaY", deltaY)
+    if(y1 === y2 && Math.abs(x1-x2) ===1) {
+      //normal move
+      console.log("normal move")
+      return true
+    } else if (y1 === y2 && Math.abs(x1-x2) ===2 && !this.state.pieceInHand.hasMoved) {
+      return true
+    } else if (Math.abs(deltaX) === Math.abs(deltaY) && Math.abs(deltaX) && Math.abs(deltaY) === 1 && this.pawnKillCheck(x2,y2)) {
+      return true
+    }
+    return false
+  }
+
+  vertMove = (finish,x1,x2) => {
+    if (x1 > x2) {
+      for (let i = x2+1; i<x1; i++) {
+        for (let z = 0; z<64;z++) {
+          if(this.state.positions[z].id === this.inputConverter([this.state.input[0],i]) && this.state.positions[z].pieceOccupied) {
+            console.log(this.state.positions[z].id,"obstruction found")
+            return false
+          }
+        }
+      }
+      return true
+    } else if (x1 < x2) {
+      for (let i = x1+1; i<x2; i++) {
+        for (let z = 0; z<64;z++) {
+          if(this.state.positions[z].id === this.inputConverter([this.state.input[0],i]) && this.state.positions[z].pieceOccupied) {
+            console.log(this.state.positions[z].id,"obstruction found1")
+            return false
+          }
+        }
+      }
+      return true
+    }
+  }
+  diagMove = (x1,x2,y1,y2) => {
     let deltaX = x1-x2
     let deltaY = y1-y2
     let xValues = []
@@ -935,7 +771,7 @@ class App extends Component {
       return true
     } else if (deltaX<0 && deltaY<0){
       for(let i = y1+1; i<y2; i++) {
-        yValues.push(i)
+        yValues.push(i)// array methods or array fill stuff that dan mentioned
       }
       for(let z=x1+1;z<x2;z++) {
         xValues.push(z)
@@ -988,9 +824,16 @@ class App extends Component {
     console.log("diag")
     return true
   }
-  castleMove = () => {
 
+  castleMove = (x2,y2) => {
+    // let rook
+    // rook = this.state.positions.filter(position => {
+    //   position.id === this.inputConverter([x2,y2])
+    // })
+    //  console.log(rook)
+     return true
   }
+
   obstructedConstrainedMove = (id) => {
     console.log("you ran the obstructed function!")
     let finish
@@ -1006,7 +849,8 @@ class App extends Component {
     let x2 = this.inputHandler(finish[0].id)[1]
 
     if (y1 === y2) {
-      if(this.vertMove(finish, x1, x2)) {
+      if(this.vertMove(finish, x1, x2) && this.state.pieceInHand.type === "rook") {
+        console.log("success")
         return true
       } else {
         return false
@@ -1042,79 +886,105 @@ class App extends Component {
     }
   }
   pieceMove = (id) => {
+    let finish
+    let returnVal = false;
+    finish = this.state.positions.filter(position =>{
+      if (position.id === Number(id)) {
+        return position
+      }
+    })
+    let y1 = this.state.input[0]
+    let y2 = this.inputHandler(finish[0].id)[0]
+    let x1 = this.state.input[1]
+    let x2 = this.inputHandler(finish[0].id)[1]
     switch(this.state.pieceInHand.type) {
       case "pawn":
-          return true
-          break;
+            if(this.pawnMove(x1, x2, y1, y2)) {
+              return true
+            } else {
+              return false
+            }
       case "rook":
-          var result = this.obstructedConstrainedMove(id)
-          if(result){
-            return true 
+          if (y1 === y2) {
+            if(this.vertMove(finish, x1, x2)) {
+              return true
+            } else {
+              return false
+            }
+          } else if (x1 === x2) {
+            if(this.horizMove(finish, y1, y2)) {
+              return true
+            } else {
+              return false
+            }
           } else {
             return false
           }
-          break;
       case "knight":
-          return true
-          break;
+        var result = this.knightMove(id)
+        if(result){
+          return true 
+        } else {
+          return false
+        }
       case "bishop":
-      return true
+        if (Math.abs(x1-x2) === Math.abs(y1-y2)) {
+          if(this.diagMove(x1,x2,y1,y2)){
+            return true
+          } else {
+            return false
+          }
+        } else {
+          return false
+        }
           break;
       case "queen":
-      return true
+      if (y1 === y2) {
+        if(this.vertMove(finish, x1, x2)) {
+          console.log("success")
+          return true
+        } else {
+          return false
+        }
+      } else if (x1 === x2) {
+        if(this.horizMove(finish, y1, y2)) {
+          return true
+        } else {
+          return false
+        }
+  
+      } else if (Math.abs(x1-x2) === Math.abs(y1-y2)) {
+        if(this.diagMove(x1,x2,y1,y2)){
+          return true
+        } else {
+          return false
+        }
+      } else {
+        return false
+      }
           break;
       case "king":
-      return true
+      if (this.kingMove(x1,y1,x2,y2)) {
+        return true
+      }
+      return false
           break;
       default:
-      return true
+      return false
     }
   }
-  validMove = (input1) => {
-    let start
-    let finish
-    start = this.state.positions.filter(position =>{
-      if (position.id === this.inputConverter(this.state.input)) {
-        return position
-      }
-    })
-    finish = this.state.positions.filter(position =>{
-      if (position.id === Number(input1)) {
-        return position
-      }
-    })
-    let pieceValid
 
-  }
   inputConverter = (input) => {
     let output = Number(((input[1]-1)*8) + input[0])
     return output
   }
 
   movePieces = (e) => {
-    // this.setState({inputPosition: e.target.id})
     let input1 = this.state.input
     let input = this.inputHandler(e.target.id)
     let output = this.inputConverter(input)
-    console.log(input, "input")
-    console.log(this.state.input)
-    console.log(Number(e.target.id), "actual target")
-    console.log(output,  "output calc")
-  
-    // console.log("State answer" +this.state.inputX,this.state.inputY)
-    //console.log(this.state.inputX)
-
- 
-    // this.setState({
-    //   inputX: e%8,
-    //   inputY: Math.round(e/8)+1
-    // })
-    //console.log(e.target.id/8, "y2")
-
-    //console.log(e.target.id/8)
     let selection = this.state.positions.filter(piece => piece.pieceOccupied === true && piece.piece.player === this.state.currentPlayer && piece.id === Number(e.target.id))
     let piece = selection[0]
-    //console.log(selection)
     if(selection.length > 0 && this.state.selectPiece === true){
         this.setState({input: input})
         this.setState({selectedPiece: piece.piece.id})
@@ -1122,39 +992,22 @@ class App extends Component {
         this.setState({pieceInHand: piece.piece})
         piece.piece = {}
         piece.pieceOccupied = false
-        //console.log(selection)
       this.setState({selectPiece: this.state.selectPiece ? false : true})
-      //console.log('here')
     } else if (this.state.selectPiece === false && this.notMyOwnPiece(e.target.id) && this.pieceMove(e.target.id)){
-      //console.log(this.validMove(e.target.id))
-
-      // this.pieceMove(e.target.id)
-      // console.log(this.pieceMove(e.target.id))
       this.setState({input: []})
       this.state.positions.filter(piece => {
         if(piece.id == e.target.id) {
-          //console.log(piece.id)
           piece.piece = this.state.pieceInHand
           piece.pieceOccupied = true
+          piece.piece.hasMoved = true
 
         }
       })
       this.setState({pieceInHand: {}})
-      // var x = this.state.positions.filter(piece => {
-      //   return piece.id == e.target.id) {
-      //     //console.log(piece.id)
-
-      //   }
-      // })
-      // piece.piece = this.state.pieceInHand
-      //piece.position = e.target.id
       this.setState({selectedPiece: null})
       this.setState({selectedPieceSymbol: ""})
       this.setState({currentPlayer: this.state.currentPlayer ? false : true})
-      //console.log(piece)
-      //this.clearBoard()
       this.setState({selectPiece: this.state.selectPiece ? false : true})
-      console.log("there")
       this.setBoard()
     } else {
       alert("invalid selection")
@@ -1162,9 +1015,7 @@ class App extends Component {
   }
   movePieces2 = (e) => {
     this.setState({inputPosition: e.target.id})
-    // this.inputHandler(e.target.id)
     console.log("State answer" +this.state.inputX,this.state.inputY)
-    //console.log(x)
     let selection = this.state.positions.filter(piece => piece.player === this.state.currentPlayer && piece.position === Number(e.target.id))
     let piece = selection[0]
     if(selection.length > 0 && this.state.selectPiece === true){
@@ -1179,12 +1030,10 @@ class App extends Component {
           piece.position = e.target.id
         }
       })
-      //piece.position = e.target.id
       this.setState({selectedPiece: null})
       this.setState({selectedPieceSymbol: ""})
       this.setState({currentPlayer: this.state.currentPlayer ? false : true})
       console.log(piece)
-      //this.clearBoard()
       this.setState({selectPiece: this.state.selectPiece ? false : true})
       this.setBoard()
     } else {
