@@ -2,10 +2,8 @@ import React from 'react';
 
 const Board = (props) => {
     return (
-      <div>
+      <div className="mainBox">
         {props.setBoard()}
-        <button onClick={props.setBoard}>Start Game</button>
-        <button onClick={props.clearBoard}>clear Game</button>
       </div>
     )
   }

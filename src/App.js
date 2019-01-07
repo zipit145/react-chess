@@ -694,14 +694,16 @@ class App extends Component {
   pawnKillCheck = (x2,y2) => {
     let finish
     finish = this.state.positions.filter(position =>{
-      if (position.id === this.inputConverter([x2,y2])) {
+      if (position.id === this.inputConverter([y2,x2])) {
         return position
       }
     })
-    if (this.state.pieceInHand.player === finish[0].piece.player) {
-      return false
-    } else {
+    if ((this.state.pieceInHand.player !== finish[0].piece.player) && finish[0].pieceOccupied) {
+      console.log(this.state.pieceInHand.player,finish[0].piece.player, "playerlogic")
       return true
+    }  else {
+      console.log(this.state.pieceInHand.player,finish[0].piece.player, "playerlogic")
+      return false
     }
   }
   pawnMove = (x1,x2,y1,y2) => {
@@ -719,6 +721,7 @@ class App extends Component {
     } else if (Math.abs(deltaX) === Math.abs(deltaY) && Math.abs(deltaX) && Math.abs(deltaY) === 1 && this.pawnKillCheck(x2,y2)) {
       return true
     }
+    console.log("for")
     return false
   }
 
@@ -825,7 +828,41 @@ class App extends Component {
     return true
   }
 
-  castleMove = (x2,y2) => {
+  castleMove = (x1,y1,x2,y2) => {
+    //let rook = this.state.positions.filter(position => position.id ===this.inputConverter([y1,x1]))
+    if(y1-y2 > 0){
+      let rook = this.state.positions.filter( position => {
+       return position.id === (this.state.currentPlayer? 1 : 57)
+      })
+       console.log(rook)
+      console.log("castle to the left")
+      if((Math.abs(y1-y2)===2) && (x1===x2) && (this.state.pieceInHand.type === "king") && (!this.state.pieceInHand.hasMoved) && (!rook[0].piece.hasMoved)){
+        console.log("valid castle left")
+      } else {
+        console.log("to big or small for castle")
+      }
+    } else {
+      let rook = this.state.positions.filter( position => {
+        return position.id === (this.state.currentPlayer? 8 : 64)
+       })
+      console.log("Castle to the right")
+      if((Math.abs(y1-y2)===2) && (x1===x2) && (this.state.pieceInHand.type === "king") && (!this.state.pieceInHand.hasMoved) && (!rook[0].piece.hasMoved)){
+        console.log("valid castle right")
+      } else {
+        console.log("to big or small for castle")
+      }
+    }
+    //king has not moved
+    //rook has not moved/ how do I find the right one
+    //both destinations are open
+    //king moves two spaces to the left or right from start
+    // console.log(x1,y1,x2,y2,Math.abs(y1-y2))
+    // if((Math.abs(y1-y2)===2) && (x1===x2) && (this.state.pieceInHand.type === "king") && (!this.state.pieceInHand.hasMoved)){
+    //   console.log("valid castle")
+    // } else {
+    //   console.log("to big or small for castle")
+    // }
+    console.log("castle move")
     // let rook
     // rook = this.state.positions.filter(position => {
     //   position.id === this.inputConverter([x2,y2])
@@ -1009,7 +1046,24 @@ class App extends Component {
       this.setState({currentPlayer: this.state.currentPlayer ? false : true})
       this.setState({selectPiece: this.state.selectPiece ? false : true})
       this.setBoard()
+    } else if(Number(e.target.id) === this.inputConverter(this.state.input)) {
+      this.setState({input: []})
+      this.state.positions.filter(piece => {
+        if(piece.id == e.target.id) {
+          piece.piece = this.state.pieceInHand
+          piece.pieceOccupied = true
+          piece.piece.hasMoved = true
+
+        }
+      })
+      this.setState({pieceInHand: {}})
+      this.setState({selectedPiece: null})
+      this.setState({selectedPieceSymbol: ""})
+      //this.setState({currentPlayer: this.state.currentPlayer ? false : true})
+      this.setState({selectPiece: this.state.selectPiece ? false : true})
+      this.setBoard()
     } else {
+      console.log(Number(e.target.id),this.inputConverter(this.state.input))
       alert("invalid selection")
     }
   }
